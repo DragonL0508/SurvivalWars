@@ -33,8 +33,6 @@ public class DomainManager {
         Domain domain = new Domain();
         domain.setOwner(player);
         domain.setClan(clanManager.getClan(player));
-        domain.setCorner1(corner1);
-        domain.setCorner2(corner2);
         domain.setBaseBlocks(getBaseBlocks(corner1, corner2));
         domainList.add(domain);
     }
@@ -66,60 +64,6 @@ public class DomainManager {
             }
         }
         return baseBlocks;
-    }
-
-    public boolean isBlockInDomain(Block block) {
-        Location blockLoc = block.getLocation();
-        for(Domain domain : domainList){
-            Location corner1 = domain.getCorner1();
-            Location corner2 = domain.getCorner2();
-            World world = corner1.getWorld();
-
-            int minX = Math.min(corner1.getBlockX(), corner2.getBlockX());
-            int minY = Math.min(corner1.getBlockY(), corner2.getBlockY());
-            int minZ = Math.min(corner1.getBlockZ(), corner2.getBlockZ());
-
-            int maxX = Math.max(corner1.getBlockX(), corner2.getBlockX());
-            int maxY = Math.max(corner1.getBlockY(), corner2.getBlockY());
-            int maxZ = Math.max(corner1.getBlockZ(), corner2.getBlockZ());
-
-            for (int x = minX; x <= maxX; x++) {
-                for (int y = minY; y <= maxY; y++) {
-                    for (int z = minZ; z <= maxZ; z++) {
-                        if(blockLoc.equals(new Location(world, x, y, z)))
-                            return true;
-                    }
-                }
-            }
-        }
-        return false;
-    }
-
-    public Domain whatIsTheDomain(Block block) {
-        Location blockLoc = block.getLocation();
-        for(Domain domain : domainList){
-            Location corner1 = domain.getCorner1();
-            Location corner2 = domain.getCorner2();
-            World world = corner1.getWorld();
-
-            int minX = Math.min(corner1.getBlockX(), corner2.getBlockX());
-            int minY = Math.min(corner1.getBlockY(), corner2.getBlockY());
-            int minZ = Math.min(corner1.getBlockZ(), corner2.getBlockZ());
-
-            int maxX = Math.max(corner1.getBlockX(), corner2.getBlockX());
-            int maxY = Math.max(corner1.getBlockY(), corner2.getBlockY());
-            int maxZ = Math.max(corner1.getBlockZ(), corner2.getBlockZ());
-
-            for (int x = minX; x <= maxX; x++) {
-                for (int y = minY; y <= maxY; y++) {
-                    for (int z = minZ; z <= maxZ; z++) {
-                        if(blockLoc.equals(new Location(world, x, y, z)))
-                            return domain;
-                    }
-                }
-            }
-        }
-        return null;
     }
 
     private boolean isAbleToBeBaseBlock(Block block) {
