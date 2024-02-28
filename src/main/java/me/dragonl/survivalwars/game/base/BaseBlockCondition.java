@@ -1,4 +1,4 @@
-package me.dragonl.survivalwars.game.domain;
+package me.dragonl.survivalwars.game.base;
 
 import org.bukkit.block.Block;
 

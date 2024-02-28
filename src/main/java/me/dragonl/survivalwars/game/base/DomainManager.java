@@ -1,10 +1,9 @@
-package me.dragonl.survivalwars.game.domain;
+package me.dragonl.survivalwars.game.base;
 
 import com.google.common.collect.Lists;
 import io.fairyproject.container.InjectableComponent;
 import me.dragonl.survivalwars.clans.ClanManager;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;

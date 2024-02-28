@@ -1,7 +1,6 @@
-package me.dragonl.survivalwars.game.domain;
+package me.dragonl.survivalwars.game.base;
 
 import me.dragonl.survivalwars.clans.Clan;
-import org.bukkit.Location;
 import org.bukkit.entity.Blaze;
 import org.bukkit.entity.Player;
 
