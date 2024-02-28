@@ -1,15 +1,28 @@
 package me.dragonl.survivalwars.clans;
 
-import org.bukkit.Color;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
+import javax.swing.plaf.basic.BasicButtonUI;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class Clan {
     private String name;
-    private List<Player> players = new ArrayList<>();
-    private Color color;
+    private List<UUID> players = new ArrayList<>();
+    private UUID leader;
+
+    public UUID getLeader() {
+        return leader;
+    }
+
+    public void setLeader(UUID leader) {
+        this.leader = leader;
+    }
+
+    private ChatColor color = ChatColor.WHITE;
 
     public String getName() {
         return name;
@@ -19,23 +32,31 @@ public class Clan {
         this.name = name;
     }
 
-    public List<Player> getPlayers() {
+    public List<Player> getBukkitPlayers() {
+        List<Player> playerList = new ArrayList<>();
+        for(UUID uuid : players){
+            playerList.add(Bukkit.getPlayer(uuid));
+        }
+        return playerList;
+    }
+
+    public List<UUID> getPlayersUUID() {
         return players;
     }
 
-    public void addPlayer(Player player){
-        this.players.add(player);
+    public void addPlayer(Player player) {
+        this.players.add(player.getUniqueId());
     }
 
-    public void setPlayers(List<Player> players) {
-        this.players = players;
+    public void removePlayer(Player player){
+        this.players.remove(player.getUniqueId());
     }
 
-    public Color getColor() {
+    public ChatColor getColor() {
         return color;
     }
 
-    public void setColor(Color color) {
+    public void setColor(ChatColor color) {
         this.color = color;
     }
 }
